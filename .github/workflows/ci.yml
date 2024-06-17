@@ -43,7 +43,7 @@ jobs:
     - name: Install dependencies
       run: |
         sudo apt-get update
-        sudo apt-get install -y libenchant-2-2 latexmk texlive-xetex texlive-fonts-recommended texlive-generic-recommended
+        sudo apt-get install -y libenchant-2-2 latexmk texlive-xetex texlive-fonts-recommended texlive-latex-recommended
         pip install --upgrade pip
         pip install --upgrade -r python-requirements.txt
 
@@ -73,6 +73,7 @@ jobs:
 
     - name: Run spellcheck
       run: |
+        source venv/bin/activate
         SPHINXOPTS='-j auto -W' make spelling
 
   deploy-webpages:
